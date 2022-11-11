@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
 // post findAll
 // map through data, serialize
 // render appropriate view
+
 });
 
 

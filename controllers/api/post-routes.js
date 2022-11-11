@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
 
+
+
+router.get("/", async (req, res) => {
+  // find all categories
+  try {
+    const postData = await Post.findAll({});
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  // be sure to include its associated Products
+});
+
 router.post('/', async (req, res) => {
   try {
     const newPost = await Post.create({

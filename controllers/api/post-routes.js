@@ -1,12 +1,14 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, Comment } = require('../../models');
 
 
 
 router.get("/", async (req, res) => {
   // find all categories
   try {
-    const postData = await Post.findAll({});
+    const postData = await Post.findAll({
+       include: Comment
+    });
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);

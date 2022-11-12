@@ -43,19 +43,24 @@ router.post('/login', async (req, res) => {
 
     const validPassword = await userData.checkPassword(req.body.password);
 
+    console.log("pixel")
     if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+    console.log("chip")
+    
     req.session.save(() => {
+      console.log("puppy")
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });
+
+  
 
   } catch (err) {
     res.status(400).json(err);

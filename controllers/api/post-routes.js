@@ -1,13 +1,12 @@
-const router = require('express').Router();
-const { Post, Comment } = require('../../models');
+const router = require("express").Router();
+const { Post, Comment } = require("../../models");
 
-
-
+// get all post
 router.get("/", async (req, res) => {
   // find all categories
   try {
     const postData = await Post.findAll({
-       include: Comment
+      include: Comment,
     });
     res.status(200).json(postData);
   } catch (err) {
@@ -16,7 +15,20 @@ router.get("/", async (req, res) => {
   // be sure to include its associated Products
 });
 
-router.post('/', async (req, res) => {
+// get single post with comments
+router.get("/:id", async (req, res) => {
+  // find all categories
+  try {
+    const postData = await Post.findByPk(req.params.id, {include: Comment});
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  
+});
+
+// create a post
+router.post("/", async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -29,7 +41,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+// delete post
+router.delete("/:id", async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
@@ -39,7 +52,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!postData) {
-      res.status(404).json({ message: 'No project found with this id!' });
+      res.status(404).json({ message: "No project found with this id!" });
       return;
     }
 

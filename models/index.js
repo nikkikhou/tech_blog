@@ -23,7 +23,7 @@ Post.belongsTo(User, {
 });
 
 
-// post has many cars
+// post has many comments
 Post.hasMany(Comment, {
   foreignKey: 'post_id',
   onDelete: 'CASCADE',

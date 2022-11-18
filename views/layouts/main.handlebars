@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>tech blog!</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -12,10 +13,24 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-      tech blog
-      </h1>
-      <nav>
+    <body>
+  <div class="flex-column justify-space-around">
+    {{!-- nav bar --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">techBlog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav justify-content-end">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Dashboard</a>
+      </li>
+      
+      <li class="nav-item">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> |
@@ -23,11 +38,24 @@
         {{else}}
         <a href="/login">login</a>
         {{/if}}
-      </nav>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+     
     </header>
     <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+        <div class="card">
+  <div class="card-body">
+          <!-- Render the sub layout -->
       {{{ body }}}
+  </div>
+</div>
+
     </main>
     <footer>
       

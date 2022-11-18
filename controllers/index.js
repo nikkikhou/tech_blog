@@ -7,11 +7,11 @@ const dashboardRoutes = require('./dashboard-routes.js');
 
 router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);
-router.use('/home', homeRoutes);
+router.use('/', homeRoutes);
 
 
-router.use((req, res) => {
-    res.send("<h1>Wrong Route!</h1>")
-  });
+// router.use((req, res) => {
+//     res.send("<h1>Wrong Route!</h1>")
+//   });
 
 module.exports = router;
